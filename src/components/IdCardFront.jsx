@@ -7,32 +7,26 @@ import GoogleLogo from "../assets/GoogleLogo.png";
 
 const IdCardFront = forwardRef(({
     name,
-    photo,
+    // photo,
     dob,
     bloodGroup,
     phone,
     email,
     designation,
     idNo,
+    designImage
 }, ref) => {
     return (
-        <div ref={ref} className="w-[204px] h-[322px] border rounded shadow-md text-center relative overflow-hidden bg-white">
-            <div className="relative w-full h-32">
-                {/* Background SVGs */}
-                <img src={Svg2} alt="bg" className="absolute top-[5px] left-0 w-full h-[120px] object-cover z-0" />
-                <img src={Svg} alt="overlay" className="absolute top-0 left-0 w-full h-[115px] object-cover z-10" />
+        <div ref={ref} className="w-[204px] h-[322px] border rounded shadow-md text-center relative overflow-hidden bg-white"
+            style={{
+                backgroundImage: `url(${designImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+            }}
+        >
+            
+            
 
-                <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 text-white text-center">
-                    <img src={GoogleLogo} alt="Company Logo" className="w-8 h-8 mb-1 mx-auto" />
-                    <h3 className="text-[12px] font-semibold">Google</h3>
-                </div>
-
-                <img
-                    src={photo || "default-photo-url"}
-                    alt="User"
-                    className="w-20 h-20 rounded-full border-4 border-white absolute left-1/2 transform -translate-x-1/2 top-18 z-20 shadow-md"
-                />
-            </div>
 
             <div className="mt-10">
                 <svg width="200" height="40">
@@ -83,10 +77,10 @@ const IdCardFront = forwardRef(({
                     </div>
                 </div>
             </div>
-            <div className="absolute bottom-0 w-full h-[54px]">
+            {/* <div className="absolute bottom-0 w-full h-[54px]">
                 <img src={Svg4} alt="bottom-bg" className="absolute top-0 left-0 w-full h-[54px] object-cover z-0" />
                 <img src={Svg3} alt="bottom-overlay" className="absolute top-0 left-0 w-full h-[56px] object-cover z-10" />
-            </div>
+            </div> */}
         </div>
     );
 });
