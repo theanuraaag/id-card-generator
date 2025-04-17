@@ -4,16 +4,18 @@ import Features from "../components/Features";
 import HowItWorks from "../components/HowItWorks";
 import Preview from "../components/Preview";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 const LandingPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 to-purple-200">
       {/* Header */}
-      <header className="py-6 bg-white shadow-md">
+      {/* <header className="py-6 bg-white shadow-md">
         <h1 className="text-3xl font-bold text-center text-blue-700">
           ID Card Generator
         </h1>
-      </header>
+      </header> */}
+      <Header/>
 
       {/* Hero Section */}
       <main className="flex-1 flex flex-col md:flex-row items-center justify-center px-8 py-12">

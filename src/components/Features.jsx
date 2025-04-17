@@ -2,7 +2,7 @@ import React from 'react'
 
 const Features = () => {
   return (
-    <section className="py-16 px-8 bg-white">
+    <section id="features" className="py-16 px-8 bg-white">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-700">
           Why Choose Our Generator?
         </h2>
