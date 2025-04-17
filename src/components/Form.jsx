@@ -1,112 +1,78 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-const Form = ({ onSubmit, existingData = null }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    photo: null,
-    dob: "",
-    bloodGroup: "",
-    phone: "",
-    email: "",
-    joinDate: "",
-    expiryDate: "",
-    address: "",
-    idNo: "",
-    designation: "",
-  });
-  const [errors, setErrors] = useState({});
-  
-  useEffect(() => {
-    if (existingData) {
-      setFormData(existingData);
-    }
-  }, [existingData]);
+const Form = ({ onSubmit, existingData, setDesignImage, designImage }) => {
+  const [photo, setPhoto] = useState(existingData.photo || null);
+  const [dynamicFields, setDynamicFields] = useState(existingData.dynamicFields || [{ key: "", value: "" }]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const handleFieldChange = (index, field, value) => {
+    const updatedFields = [...dynamicFields];
+    updatedFields[index][field] = value;
+    setDynamicFields(updatedFields);
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFormData((prev) => ({
-        ...prev,
-        photo: URL.createObjectURL(file),
-      }));
-    }
+  const addField = () => {
+    setDynamicFields([...dynamicFields, { key: "", value: "" }]);
   };
 
-  const handleRemovePhoto = () => {
-    setFormData((prev) => ({
-      ...prev,
-      photo: null,
-    }));
+  const removeField = (index) => {
+    const updatedFields = dynamicFields.filter((_, i) => i !== index);
+    setDynamicFields(updatedFields);
   };
+
+  // const handleDesignUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       setDesignImage(reader.result);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Basic validation
-    let validationErrors = {};
-    if (!formData.name) validationErrors.name = "Name is required";
-    if (!formData.phone || !/^\d{10}$/.test(formData.phone)) validationErrors.phone = "Valid phone number is required";
-    if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) validationErrors.email = "Valid email is required";
-
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-    } else {
-      onSubmit(formData);
-    }
+    onSubmit({ photo, dynamicFields });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-      <div className="mb-4">
-        <label htmlFor="name" className="block text-sm font-semibold">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        />
-        {errors.name && <p className="text-red-600 text-sm">{errors.name}</p>}
-      </div>
+    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-4 bg-gray-100 rounded shadow">
+      <h2 className="text-xl font-semibold mb-4">Enter Details</h2>
 
-      {/* Photo Upload */}
+      {/* Upload Photo */}
       <div className="mb-4">
-        <label className="block text-sm font-semibold">Upload Photo</label>
-        {!formData.photo ? (
+        <label className="block text-sm font-semibold mb-2">Upload Profile Photo</label>
+
+        {!photo ? (
           <label
             htmlFor="photo"
-            className="cursor-pointer inline-block bg-blue-500 text-white px-4 py-2 rounded mt-2"
+            className="cursor-pointer inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
           >
-            Choose File
+            Choose Photo
             <input
               type="file"
               id="photo"
-              name="photo"
               accept="image/*"
-              onChange={handleFileChange}
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  setPhoto(URL.createObjectURL(file));
+                }
+              }}
               className="hidden"
             />
           </label>
         ) : (
-          <div className="relative">
+          <div className="relative w-24 h-24">
             <img
-              src={formData.photo}
+              src={photo}
               alt="Uploaded"
-              className="w-20 h-20 rounded-full border-4 border-gray-300"
+              className="w-24 h-24 rounded-full border-4 border-blue-500 object-cover"
             />
             <button
               type="button"
-              onClick={handleRemovePhoto}
-              className="absolute top-0 right-0 text-red-600 font-bold text-xl"
+              onClick={() => setPhoto(null)}
+              className="absolute -top-2 -right-2 bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm shadow-md"
             >
               &times;
             </button>
@@ -114,121 +80,100 @@ const Form = ({ onSubmit, existingData = null }) => {
         )}
       </div>
 
+
+
+      {/* Upload Design Background */}
       <div className="mb-4">
-        <label htmlFor="dob" className="block text-sm font-semibold">Date of Birth</label>
-        <input
-          type="date"
-          id="dob"
-          name="dob"
-          value={formData.dob}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        />
+        <label className="block text-sm font-semibold mb-2">Upload ID Card Design (optional)</label>
+
+        {!designImage ? (
+          <label
+            htmlFor="design-upload"
+            className="cursor-pointer inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          >
+            Choose Design
+            <input
+              type="file"
+              id="design-upload"
+              accept="image/*"
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  setDesignImage(URL.createObjectURL(file));
+                }
+              }}
+              className="hidden"
+            />
+          </label>
+        ) : (
+          <div className="relative w-32 h-20 mt-2">
+            <img
+              src={designImage}
+              alt="Design Preview"
+              className="w-32 h-20 rounded-lg border-4 border-green-500 object-cover"
+            />
+            <button
+              type="button"
+              onClick={() => setDesignImage(null)}
+              className="absolute -top-2 -right-2 bg-white text-red-600 rounded-full w-6 h-6 flex items-center justify-center font-bold text-sm shadow-md"
+            >
+              &times;
+            </button>
+          </div>
+        )}
       </div>
 
+
+      {/* Dynamic Fields */}
       <div className="mb-4">
-        <label htmlFor="bloodGroup" className="block text-sm font-semibold">Blood Group</label>
-        <input
-          type="text"
-          id="bloodGroup"
-          name="bloodGroup"
-          value={formData.bloodGroup}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        />
+        {dynamicFields.map((field, index) => (
+          <div key={index} className="flex gap-2 mb-2">
+            <input
+              type="text"
+              placeholder="Field Name (e.g., Name)"
+              value={field.key}
+              onChange={(e) => handleFieldChange(index, "key", e.target.value)}
+              className="flex-1 p-2 border rounded"
+              required
+            />
+            <input
+              type="text"
+              placeholder="Field Value (e.g., Anurag)"
+              value={field.value}
+              onChange={(e) => handleFieldChange(index, "value", e.target.value)}
+              className="flex-1 p-2 border rounded"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => removeField(index)}
+              className="bg-red-500 text-white px-3 rounded"
+            >
+              X
+            </button>
+          </div>
+        ))}
       </div>
 
-      <div className="mb-4">
-        <label htmlFor="phone" className="block text-sm font-semibold">Phone</label>
-        <input
-          type="text"
-          id="phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        />
-        {errors.phone && <p className="text-red-600 text-sm">{errors.phone}</p>}
+      <div className="text-center mb-4">
+        <button
+          type="button"
+          onClick={addField}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          + Add More Fields
+        </button>
       </div>
 
-      <div className="mb-4">
-        <label htmlFor="email" className="block text-sm font-semibold">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        />
-        {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
+      {/* Submit */}
+      <div className="text-center">
+        <button
+          type="submit"
+          className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
+        >
+          Show Preview
+        </button>
       </div>
-
-      <div className="mb-4">
-        <label htmlFor="idNo" className="block text-sm font-semibold">ID Number</label>
-        <input
-          type="text"
-          id="idNo"
-          name="idNo"
-          value={formData.idNo}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        />
-      </div>
-
-      <div className="mb-4">
-        <label htmlFor="designation" className="block text-sm font-semibold">Designation</label>
-        <input
-          type="text"
-          id="designation"
-          name="designation"
-          value={formData.designation}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        />
-      </div>
-
-      <div className="mb-4">
-        <label htmlFor="joinDate" className="block text-sm font-semibold">Join Date</label>
-        <input
-          type="date"
-          id="joinDate"
-          name="joinDate"
-          value={formData.joinDate}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        />
-      </div>
-
-      <div className="mb-4">
-        <label htmlFor="expiryDate" className="block text-sm font-semibold">Expiry Date</label>
-        <input
-          type="date"
-          id="expiryDate"
-          name="expiryDate"
-          value={formData.expiryDate}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        />
-      </div>
-
-      <div className="mb-4">
-        <label htmlFor="address" className="block text-sm font-semibold">Address</label>
-        <textarea
-          id="address"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-          className="w-full p-2 border rounded mt-2"
-        ></textarea>
-      </div>
-
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
-        Generate ID Card
-      </button>
     </form>
   );
 };
