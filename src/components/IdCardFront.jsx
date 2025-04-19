@@ -77,6 +77,10 @@ const IdCardFront = forwardRef(({
                     </div>
                 </div>
             </div>
+            <div className="absolute top-4 left-[25px] z-20 text-white text-left">
+                <img src={GoogleLogo} alt="Company Logo" className="w-8 h-8 rounded-full object-cover border-2 border-gray-200 mb-1" />
+                <h3 className="text-[12px] font-semibold">Google</h3>
+            </div>
             {/* <div className="absolute bottom-0 w-full h-[54px]">
                 <img src={Svg4} alt="bottom-bg" className="absolute top-0 left-0 w-full h-[54px] object-cover z-0" />
                 <img src={Svg3} alt="bottom-overlay" className="absolute top-0 left-0 w-full h-[56px] object-cover z-10" />
