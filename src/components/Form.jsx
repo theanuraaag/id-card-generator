@@ -15,7 +15,8 @@ const Form = ({ templateId, onFormSubmit, existingData }) => {
     companyAddress: '',
     companyLogo: '',
     joinDate: '',
-    expiryDate: ''
+    expiryDate: '',
+    employeeAddress: ''
   });
 
   const handleInputChange = (e) => {
@@ -196,6 +197,23 @@ const Form = ({ templateId, onFormSubmit, existingData }) => {
                 />
               </div>
             </div>
+
+            {/* Employee Address - Only for template 5 */}
+            {Number(templateId) === 5 && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Employee Address
+                </label>
+                <textarea
+                  name="employeeAddress"
+                  value={formData.employeeAddress}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                  rows="2"
+                  required
+                />
+              </div>
+            )}
 
             {/* Company Information */}
             <div>

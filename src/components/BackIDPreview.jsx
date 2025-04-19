@@ -1,5 +1,8 @@
 import React from 'react';
 import { QRCodeSVG } from "qrcode.react";
+import TermsSection from './BackIDPreview/TermsSection';
+import DatesSection from './BackIDPreview/DatesSection';
+import ContactIcons from './BackIDPreview/ContactIcons';
 
 const BackIDPreview = ({ templateId, data }) => {
   const getTemplateBackground = () => {
@@ -12,13 +15,14 @@ const BackIDPreview = ({ templateId, data }) => {
       default: return 'url(/templates/classic-id-back.png)';
     }
   };
+
   const formatText = (text, maxLength = 25) => {
     if (!text) return '';
     return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
   };
 
   const templateConfigs = {
-    1: { // Classic ID
+    1: {
       termsTitle: { top: '25%', left: '10%', width: '80%' },
       termsContent: { top: '30%', left: '10%', width: '80%', height: '30%' },
       joinDate: { top: '60%', left: '17%', width: '80%' },
@@ -28,12 +32,12 @@ const BackIDPreview = ({ templateId, data }) => {
       qrCode: { bottom: '2%', right: '35%', width: '35%', height: '35%' },
       textColor: {
         companyNameBack: 'text-white',
-        termsTitle: 'text-white',
-        termsContent: 'text-white',
-        dates: 'text-white'
+        termsTitle: 'text-black',
+        termsContent: 'text-black',
+        dates: 'text-black'
       },
     },
-    2: { // Corporate ID
+    2: {
       termsTitle: { top: '35%', left: '10%', width: '80%' },
       termsContent: { top: '43%', left: '10%', width: '80%', height: '30%' },
       joinDate: { top: '74%', left: '30%', width: '80%' },
@@ -43,12 +47,12 @@ const BackIDPreview = ({ templateId, data }) => {
       qrCode: { bottom: '2%', right: '35%', width: '35%', height: '35%' },
       textColor: {
         companyNameBack: 'text-white',
-        termsTitle: 'text-white',
-        termsContent: 'text-white',
-        dates: 'text-white'
+        termsTitle: 'text-black',
+        termsContent: 'text-black',
+        dates: 'text-black'
       },
     },
-    3: { // Student ID
+    3: {
       termsTitle: { top: '6%', left: '10%', width: '80%' },
       termsContent: { top: '15%', left: '10%', width: '80%', height: '30%' },
       joinDate: { top: '49%', left: '28%', width: '80%' },
@@ -58,44 +62,52 @@ const BackIDPreview = ({ templateId, data }) => {
       qrCode: { bottom: '2%', right: '35%', width: '35%', height: '35%' },
       textColor: {
         companyNameBack: 'text-white',
-        termsTitle: 'text-white',
-        termsContent: 'text-white',
-        dates: 'text-white'
+        termsTitle: 'text-black',
+        termsContent: 'text-black',
+        dates: 'text-black'
       },
     },
-    4: { // Modern ID
+    4: {
+      termsTitle: { top: '17%', left: '10%', width: '80%' },
+      termsContent: { top: '25%', left: '15%', width: '60%', height: '30%' },
+      joinDate: { top: '61%', left: '29%', width: '80%' },
+      expiryDate: { top: '66%', left: '29%', width: '80%' },
+      backLogo: { top: '5%', left: '1%', width: '60%', height: '10%' },
+      backCompanyName: { top: '7%', left: '15%', width: '80%' },
+      textColor: {
+        companyNameBack: 'text-white',
+        termsTitle: 'text-black',
+        termsContent: 'text-black',
+        dates: 'text-black'
+      },
+    },
+    5: {
       termsTitle: { top: '25%', left: '10%', width: '80%' },
       termsContent: { top: '30%', left: '10%', width: '80%', height: '30%' },
       joinDate: { top: '66%', left: '17%', width: '80%' },
       expiryDate: { top: '71%', left: '17%', width: '80%' },
-      backLogo: { top: '2%', left: '10%', width: '80%', height: '10%' },
-      backCompanyName: { top: '13%', left: '10%', width: '80%' },
-      textColor: {
-        companyNameBack: 'text-white',
-        termsTitle: 'text-white',
-        termsContent: 'text-white',
-        dates: 'text-white'
+      backLogo: { top: '15%', left: '0%', width: '50%', height: '10%' },
+      backCompanyName: { top: '16%', left: '18%', width: '80%' },
+      employeeAddress: { top: '58%', left: '30%', width: '68%' },
+      icons: {
+        phone: { bottom: '55%', left: '15%', size: 20 },
+        email: { bottom: '46%', left: '15%', size: 20 },
+        location: { bottom: '35%', left: '15%', size: 20 }
       },
-    },
-    5: { // Professional ID
-      termsTitle: { top: '25%', left: '10%', width: '80%' },
-      termsContent: { top: '30%', left: '10%', width: '80%', height: '30%' },
-      joinDate: { top: '66%', left: '17%', width: '80%' },
-      expiryDate: { top: '71%', left: '17%', width: '80%' },
-      backLogo: { top: '2%', left: '10%', width: '80%', height: '10%' },
-      backCompanyName: { top: '13%', left: '10%', width: '80%' },
       textColor: {
         companyNameBack: 'text-white',
-        termsTitle: 'text-white',
-        termsContent: 'text-white',
-        dates: 'text-white'
+        termsTitle: 'text-black',
+        termsContent: 'text-black',
+        dates: 'text-black',
+        icons: 'text-[#edc74f]',
+        employeeAddress: 'text-white'
       },
     }
   };
 
   const config = templateConfigs[templateId] || templateConfigs[1];
+
   const generateQRData = () => {
-    // Add more details but keep the simple format
     const qrText = `Name: ${data.fullName}
 ID: ${data.employeeId}
 Designation: ${data.designation}
@@ -106,6 +118,7 @@ Join Date: ${data.joinDate}
 Expiry Date: ${data.expiryDate}`;
     return qrText;
   };
+
   return (
     <div className="flex justify-center">
       <div
@@ -156,92 +169,10 @@ Expiry Date: ${data.expiryDate}`;
           </div>
         )}
 
-        {/* Terms and Conditions Title */}
-        <div
-          style={{
-            position: 'absolute',
-            top: config.termsTitle.top,
-            left: config.termsTitle.left,
-            width: config.termsTitle.width,
-            textAlign: 'center',
-            zIndex: 10
-          }}
-        >
-          <div className={`text-[14px] mt-4 font-bold ${config.textColor.termsTitle}`}>
-            TERMS & CONDITIONS
-          </div>
-        </div>
+        <TermsSection config={config} templateId={templateId} />
+        <DatesSection config={config} data={data} />
+        <ContactIcons config={config} data={data} templateId={templateId} />
 
-        {/* Terms and Conditions Content */}
-        <div
-          style={{
-            position: 'absolute',
-            top: config.termsContent.top,
-            left: config.termsContent.left,
-            width: config.termsContent.width,
-            height: config.termsContent.height,
-            textAlign: 'left',
-            zIndex: 10
-          }}
-        >
-          <div className={`text-[10px] font-semibold text-justify space-y-0 mt-4 ${config.textColor.termsContent}`}>
-            <div className="flex gap-2">
-              <span> &#8226;</span>
-              <p> Identification: Carry the ID card at all times during working hours for identification purposes.</p>
-            </div>
-
-            <div className="flex gap-2">
-              <span> &#8226;</span>
-              <p> Authorized Use: The ID card is strictly for official use and should not be shared or used for unauthorized purposes.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Join Date */}
-        {data.joinDate && (
-          <div
-            className={`text-[10px] font-semibold ${config.textColor.dates}`}
-            style={{
-              position: 'absolute',
-              top: config.joinDate.top,
-              left: config.joinDate.left,
-              width: config.joinDate.width,
-              textAlign: 'left',
-              zIndex: 10,
-              padding: 0,
-              margin: 0,
-              display: 'flex',
-              gap: '2px'
-            }}
-          >
-            <span className="font-semibold whitespace-nowrap" style={{ width: '35px' }}>Join</span>
-            <span className="font-semibold" style={{ marginRight: '8px' }}>:</span>
-            <span>{formatText(data.joinDate, 15)}</span>
-          </div>
-        )}
-
-        {/* Expiry Date */}
-        {data.expiryDate && (
-          <div
-            className={`text-[10px] font-semibold ${config.textColor.dates}`}
-            style={{
-              position: 'absolute',
-              top: config.expiryDate.top,
-              left: config.expiryDate.left,
-              width: config.expiryDate.width,
-              textAlign: 'left',
-              zIndex: 10,
-              padding: 0,
-              margin: 0,
-              display: 'flex',
-              gap: '2px'
-            }}
-          >
-            <span className="font-semibold whitespace-nowrap" style={{ width: '35px' }}>Exp</span>
-            <span className="font-semibold" style={{ marginRight: '8px' }}>:</span>
-            <span>{formatText(data.expiryDate, 15)}</span>
-          </div>
-        )}
         {/* QR Code - Only for template 1 */}
         {Number(templateId) === 1 && (
           <div

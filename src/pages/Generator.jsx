@@ -53,7 +53,8 @@ const dummyData = {
   companyAddress: " Silicon Valley",
   companyLogo: "https://randomuser.me/api/portraits/men/32.jpg",
   joinDate: "2023-01-15",
-  expiryDate: "2025-01-15"
+  expiryDate: "2025-01-15",
+  employeeAddress: "123 Main St, Anytown, USA"
 };
 
 const Generator = () => {
@@ -163,7 +164,7 @@ const Generator = () => {
     // Add front card
     const frontImage = await html2canvas(frontCard, {
       scale: 2,
-      useCORS: true,
+        useCORS: true,
       logging: false,
       allowTaint: true,
       backgroundColor: null
@@ -179,10 +180,10 @@ const Generator = () => {
     );
 
     // Add back card on new page
-    pdf.addPage();
+      pdf.addPage();
     const backImage = await html2canvas(backCard, {
       scale: 2,
-      useCORS: true,
+        useCORS: true,
       logging: false,
       allowTaint: true,
       backgroundColor: null
@@ -197,7 +198,7 @@ const Generator = () => {
       finalHeight
     );
 
-    pdf.save("id-card.pdf");
+      pdf.save("id-card.pdf");
   };
 
   console.log("Generator Rendering with State:", { showTemplateSelection, showCard });
@@ -210,21 +211,22 @@ const Generator = () => {
         <h1 className="text-center text-3xl font-bold mb-8">✨ Generate Your ID Card ✨</h1>
 
         {showTemplateSelection && (
-          <div className="max-w-[95%] mx-auto">
-            <h2 className="text-2xl font-bold text-center mb-6">Choose Your ID Card Template</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="lg:col-span-3 flex flex-wrap justify-center gap-8">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold text-center mb-12">Choose Your ID Card Template</h2>
+            <div className="flex flex-col gap-12">
+              {/* First row - 3 templates */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 place-items-stretch">
                 {templates.slice(0, 3).map((template) => (
                   <div
                     key={template.id}
-                    className="w-full md:w-[calc(33.33%-1.5rem)] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer h-full"
                     onClick={() => handleTemplateSelect(template.id)}
                   >
-                    <div className="p-4 border-b bg-gradient-to-r from-blue-600 to-purple-600">
-                      <h3 className="text-xl font-semibold mb-2 text-white">{template.name}</h3>
-                      <p className="text-blue-100 text-sm">{template.description}</p>
+                    <div className="p-6 border-b bg-gradient-to-r from-blue-600 to-purple-600 h-[120px] flex flex-col">
+                      <h3 className="text-2xl font-semibold mb-3 text-white">{template.name}</h3>
+                      <p className="text-blue-100 text-base">{template.description}</p>
                     </div>
-                    <div className="p-6 bg-gray-50">
+                    <div className="p-8 bg-gray-50">
                       <CardPreview 
                         data={dummyData} 
                         templateId={template.id}
@@ -235,20 +237,22 @@ const Generator = () => {
                 ))}
               </div>
               
-              {/* Center the last two templates */}
-              <div className="lg:col-span-3 flex flex-wrap justify-center gap-8 mt-8">
+              {/* Second row - 2 templates */}
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto w-full">
+                
                 {templates.slice(3).map((template) => (
                   <div
                     key={template.id}
-                    className="w-full md:w-[calc(33.33%-1.5rem)] bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                    className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer h-full  "
                     onClick={() => handleTemplateSelect(template.id)}
                   >
-                    <div className="p-4 border-b bg-gradient-to-r from-blue-600 to-purple-600">
-                      <h3 className="text-xl font-semibold mb-2 text-white">{template.name}</h3>
-                      <p className="text-blue-100 text-sm">{template.description}</p>
+                    <div className="p-6 border-b bg-gradient-to-r from-blue-600 to-purple-600 h-[120px] flex flex-col ">
+                      <h3 className="text-2xl font-semibold mb-3 text-white">{template.name}</h3>
+                      <p className="text-blue-100 text-base">{template.description}</p>
                     </div>
-                    <div className="p-6 bg-gray-50">
-                      <CardPreview 
+                    <div className="p-8 bg-gray-50">
+                      <CardPreview
                         data={dummyData} 
                         templateId={template.id}
                         showBackSide={false}
@@ -312,11 +316,11 @@ const Generator = () => {
               </div>
               <div className="p-8">
                 <div className=" ">
-                  <Form
+            <Form
                     onFormSubmit={handleFormSubmit}
-                    existingData={formData}
+              existingData={formData}
                     templateId={selectedTemplate}
-                  />
+            />
                 </div>
                 
               </div>
@@ -333,27 +337,27 @@ const Generator = () => {
                   templateId={selectedTemplate}
                   showBackSide={true}
                 />
-              </div>
+            </div>
 
-              <div className="flex flex-wrap gap-4 justify-center mt-6 print:hidden">
-                <button
-                  onClick={handleDownload}
-                  className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold shadow transition-all"
-                >
-                  📷 Download as Image
-                </button>
-                <button
-                  onClick={handleDownloadPDF}
-                  className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold shadow transition-all"
-                >
-                  📄 Download as PDF
-                </button>
-                <button
-                  onClick={handleEdit}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow transition-all"
-                >
-                  ✏️ Edit Information
-                </button>
+            <div className="flex flex-wrap gap-4 justify-center mt-6 print:hidden">
+              <button
+                onClick={handleDownload}
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold shadow transition-all"
+              >
+                📷 Download as Image
+              </button>
+              <button
+                onClick={handleDownloadPDF}
+                className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold shadow transition-all"
+              >
+                📄 Download as PDF
+              </button>
+              <button
+                onClick={handleEdit}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold shadow transition-all"
+              >
+                ✏️ Edit Information
+              </button>
               </div>
             
             </div>

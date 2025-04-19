@@ -1,5 +1,8 @@
 import React from "react";
 import { QRCodeSVG } from "qrcode.react";
+import { PiPhoneFill, PiEnvelopeFill } from "react-icons/pi";
+import { MdLocationPin } from "react-icons/md";
+
 
 // Template field positions configuration
 const templateConfigs = {
@@ -101,68 +104,76 @@ const templateConfigs = {
     qrCode: { bottom: '-5%', right: '31%', width: '35%', height: '35%' },
   },
   4: { // Modern ID
-    photo: { top: '13%', left: '27%', width: '132px', height: '132px' },
-    name: { top: '46%', left: '17%', width: '68%' },
-    designation: { top: '52%', left: '16%', width: '68%' },
-    employeeId: { top: '62%', left: '17%', width: '68%' },
-    department: { top: '67%', left: '17%', width: '60%' },
-    phone: { top: '72%', left: '17%', width: '68%' },
-    email: { top: '77%', left: '17%', width: '68%' },
-    joinDate: { top: '60%', left: '17%', width: '80%' },
-    expiryDate: { top: '64%', left: '17%', width: '80%' },
-    backLogo: { top: '2%', left: '10%', width: '80%', height: '10%' },
-    backCompanyName: { top: '13%', left: '10%', width: '80%' },
-    frontLogo: { top: '3%', left: '5%', width: '15%', height: '15%' },
-    frontCompanyName: { top: '5%', left: '25%', width: '70%' },
-    termsTitle: { top: '25%', left: '10%', width: '80%' },
-    termsContent: { top: '30%', left: '10%', width: '80%', height: '30%' },
+    photo: { top: '16%', left: '24%', width: '134px', height: '134px' },
+    name: { top: '48%', left: '17%', width: '68%' },
+    designation: { top: '54.5%', left: '16%', width: '68%' },
+    employeeId: { top: '66%', left: '12%', width: '68%' },
+    department: { top: '66%', left: '16%', width: '60%' },
+    phone: { top: '71%', left: '12%', width: '68%' },
+    email: { top: '76%', left: '12%', width: '68%' },
+    joinDate: { top: '61%', left: '29%', width: '80%' },
+    expiryDate: { top: '66%', left: '29%', width: '80%' },
+    backLogo: { top: '5%', left: '1%', width: '60%', height: '10%' },
+    backCompanyName: { top: '7%', left: '22%', width: '80%' },
+    frontLogo: { top: '3%', left: '20%', width: '15%', height: '15%' },
+    frontCompanyName: { top: '5%', left: '41%', width: '70%' },
+    termsTitle: { top: '17%', left: '10%', width: '80%' },
+    termsContent: { top: '25%', left: '15%', width: '60%', height: '30%' },
     textColor: {
       fullName: 'text-gray-800',
       designation: 'text-gray-600',
       employeeId: 'text-black',
       department: 'text-black',
-      phone: 'text-white',
-      email: 'text-white',
+      phone: 'text-black',
+      email: 'text-black',
       companyName: 'text-white',
       companyAddress: 'text-white',
       companyNameBack: 'text-white',
-      termsTitle: 'text-black',
-      termsContent: 'text-black',
-      dates: 'text-black'
+      termsTitle: 'text-white',
+      termsContent: 'text-white',
+      dates: 'text-white'
     },
-    qrCode: { bottom: '2%', right: '35%', width: '35%', height: '35%' },
+    qrCode: { bottom: '-7%', right: '31%', width: '35%', height: '35%' },
   },
   5: { // Professional ID
-    photo: { top: '13%', left: '27%', width: '132px', height: '132px' },
-    name: { top: '46%', left: '17%', width: '68%' },
-    designation: { top: '52%', left: '16%', width: '68%' },
-    employeeId: { top: '62%', left: '17%', width: '68%' },
+    photo: { top: '19%', left: '22%', width: '145px', height: '145px' },
+    name: { top: '58%', left: '17%', width: '68%' },
+    designation: { top: '63%', left: '17%', width: '68%' },
+    employeeId: { top: '88%', left: '38%', width: '25%' },
     department: { top: '67%', left: '17%', width: '60%' },
-    phone: { top: '72%', left: '17%', width: '68%' },
-    email: { top: '77%', left: '17%', width: '68%' },
-    joinDate: { top: '60%', left: '17%', width: '80%' },
-    expiryDate: { top: '64%', left: '17%', width: '80%' },
-    backLogo: { top: '2%', left: '10%', width: '80%', height: '10%' },
-    backCompanyName: { top: '13%', left: '10%', width: '80%' },
-    frontLogo: { top: '3%', left: '5%', width: '15%', height: '15%' },
-    frontCompanyName: { top: '5%', left: '25%', width: '70%' },
+    phone: { top: '40%', left: '30%', width: '68%' },
+    employeeAddress: { top: '58%', left: '30%', width: '68%' },
+    email: { top: '49%', left: '30%', width: '68%' },
+    joinDate: { top: '72%', left: '25%', width: '80%' },
+    expiryDate: { top: '76%', left: '25%', width: '80%' },
+    backLogo: { top: '15%', left: '0%', width: '50%', height: '10%' },
+    backCompanyName: { top: '16%', left: '18%', width: '80%' },
+    frontLogo: { top: '7%', left: '22%', width: '15%', height: '15%' },
+    frontCompanyName: { top: '9%', left: '42%', width: '70%' },
     termsTitle: { top: '25%', left: '10%', width: '80%' },
     termsContent: { top: '30%', left: '10%', width: '80%', height: '30%' },
+    icons: {
+      phone: { bottom: '55%', left: '15%', size: 20 },
+      email: { bottom: '46%', left: '15%', size: 20 },
+      location: { bottom: '35%', left: '15%', size: 20 }
+    },
     textColor: {
       fullName: 'text-white',
       designation: 'text-white',
       employeeId: 'text-white',
       department: 'text-white',
       phone: 'text-white',
+      employeeAddress: 'text-white',
       email: 'text-white',
       companyName: 'text-white',
       companyAddress: 'text-white',
       companyNameBack: 'text-white',
       termsTitle: 'text-black',
       termsContent: 'text-black',
-      dates: 'text-black'
+      dates: 'text-white',
+      icons: 'text-[#edc74f]'
     },
-    qrCode: { bottom: '2%', right: '35%', width: '35%', height: '35%' },
+    qrCode: { bottom: '5%', right: '32%', width: '35%', height: '35%' },
   }
 };
 
@@ -240,7 +251,7 @@ const CardPreview = ({ data, designImage, templateId, showBackSide = false }) =>
           cardClass: "bg-gradient-to-r from-red-400 to-orange-500",
           textClass: "text-white",
           headerClass: "bg-white text-red-600",
-          photoClass: "border-4 border-white"
+          photoClass: "border-4 border-[#edc74f]"
         };
       default:
         return {
@@ -289,16 +300,17 @@ Company: ${data.companyName}
 Email: ${data.email}
 Phone: ${data.phone}
 Join Date: ${data.joinDate}
-Expiry Date: ${data.expiryDate}`;
+Expiry Date: ${data.expiryDate}
+Address: ${data.employeeAddress}`;
     return qrText;
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 w-full justify-center items-center">
+    <div className="flex flex-col lg:flex-row gap-8 w-full justify-center items-center ">
       {/* Front Side */}
       <div
         id="id-card-front"
-        className={`relative w-64 h-110 rounded-lg overflow-hidden ${styles.cardClass}`}
+        className={`relative w-64 h-110 rounded-lg overflow-hidden  ${styles.cardClass}`}
         style={{
           backgroundImage: getTemplateBackground(),
           backgroundSize: 'cover',
@@ -353,14 +365,13 @@ Expiry Date: ${data.expiryDate}`;
         {/* Profile Photo */}
         {data.photo && (
           <div
-            className="absolute"
+            className="absolute border-4 border-[#edc74f]"
             style={{
               top: config.photo.top,
               left: config.photo.left,
               width: config.photo.width,  // Fixed width
               height: config.photo.height, // Same as width for perfect circle
               borderRadius: '50%',
-              border: '4px solid white',
               boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
               overflow: 'hidden',
               display: 'flex',
@@ -368,9 +379,9 @@ Expiry Date: ${data.expiryDate}`;
               justifyContent: 'center'
             }}
           >
-            <img
-              src={data.photo}
-              alt="Profile"
+          <img
+            src={data.photo}
+            alt="Profile"
               style={{
                 width: '100%',
                 height: '100%',
@@ -459,7 +470,7 @@ Expiry Date: ${data.expiryDate}`;
             <span>{formatText(data.department, 15)}</span>
           </div>
         )}
-        {data.phone && (
+        {data.phone && Number(templateId) !== 5 && (
           <div
             className={`text-[10px] font-semibold  ${config.textColor.phone}`}
             style={{
@@ -481,7 +492,7 @@ Expiry Date: ${data.expiryDate}`;
             <span>{formatText(data.phone, 15)}</span>
           </div>
         )}
-        {data.email && (
+        {data.email && Number(templateId) !== 5 && (
           <div
             className={`text-[10px] font-semibold ${config.textColor.email}`}
             style={{
@@ -541,14 +552,14 @@ Expiry Date: ${data.expiryDate}`;
                 fgColor="black"
               />
             </div>
-          </div>
+        </div>
         )}
       </div>
 
       {/* Back Side - Only show if showBackSide is true */}
       {showBackSide && (
-        <div
-          id="id-card-back"
+      <div
+        id="id-card-back"
           className={`relative w-64 h-110 rounded-lg overflow-hidden ${styles.cardClass}`}
           style={{
             backgroundImage: getTemplateBackground(true),
@@ -599,46 +610,123 @@ Expiry Date: ${data.expiryDate}`;
           )}
 
           {/* Terms and Conditions Title */}
-          <div
-            style={{
-              position: 'absolute',
-              top: config.termsTitle.top,
-              left: config.termsTitle.left,
-              width: config.termsTitle.width,
-              textAlign: 'center',
-              zIndex: 10
-            }}
-          >
-            <div className={`text-[14px] mt-4 font-bold ${config.textColor.termsTitle}`}>
-              TERMS & CONDITIONS
+          {Number(templateId) !== 5 && (
+            <div
+              style={{
+                position: 'absolute',
+                top: config.termsTitle.top,
+                left: config.termsTitle.left,
+                width: config.termsTitle.width,
+                textAlign: 'center',
+                zIndex: 10
+              }}
+            >
+              <div className={`text-[14px] mt-4 font-bold ${config.textColor.termsTitle}`}>
+                TERMS & CONDITIONS
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Terms and Conditions Content */}
-          <div
-            style={{
-              position: 'absolute',
-              top: config.termsContent.top,
-              left: config.termsContent.left,
-              width: config.termsContent.width,
-              height: config.termsContent.height,
-              textAlign: 'left',
-              zIndex: 10
-            }}
-          >
-            <div className={`text-[10px] font-semibold text-justify space-y-0 mt-4 ${config.textColor.termsContent}`}>
-              <div className="flex gap-2">
-                <span> &#8226;</span>
-                <p> Identification: Carry the ID card at all times during working hours for identification purposes.</p>
-              </div>
+          {Number(templateId) !== 5 && (
+            <div
+              style={{
+                position: 'absolute',
+                top: config.termsContent.top,
+                left: config.termsContent.left,
+                width: config.termsContent.width,
+                height: config.termsContent.height,
+                textAlign: 'left',
+                zIndex: 10
+              }}
+            >
+              <div className={`text-[10px] font-semibold text-justify space-y-0 mt-4 ${config.textColor.termsContent}`}>
+                <div className="flex gap-2">
+                  <span> &#8226;</span>
+                  <p> Identification: Carry the ID card at all times during working hours for identification purposes.</p>
+      </div>
 
-              <div className="flex gap-2">
-                <span> &#8226;</span>
-                <p> Authorized Use: The ID card is strictly for official use and should not be shared or used for unauthorized purposes.</p>
+                <div className="flex gap-2">
+                  <span> &#8226;</span>
+                  <p> Authorized Use: The ID card is strictly for official use and should not be shared or used for unauthorized purposes.</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
+          {data.phone && Number(templateId) !== 1 && Number(templateId) !== 2 && Number(templateId) !== 3 && Number(templateId) !== 4 && (
+            <div
+              className={`text-[10px] font-semibold flex flex-col items-start  ${config.textColor.phone}`}
+              style={{
+                position: 'absolute',
+                top: config.phone.top,
+                left: config.phone.left,
+                width: config.phone.width,
+                textAlign: 'left',
+                zIndex: 10,
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                gap: '2px',
 
+              }}
+            >
+              <span className="font-semibold whitespace-nowrap " style={{ width: '35px' }}>Phone</span>
+
+              <span>{formatText(data.phone, 15)}</span>
+
+
+            </div>
+          )}
+          {data.email && Number(templateId) !== 1 && Number(templateId) !== 2 && Number(templateId) !== 3 && Number(templateId) !== 4 && (
+            <div
+              className={`text-[10px] font-semibold flex flex-col items-start  ${config.textColor.email}`}
+              style={{
+                position: 'absolute',
+                top: config.email.top,
+                left: config.email.left,
+                width: config.email.width,
+                textAlign: 'left',
+                zIndex: 10,
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                gap: '2px',
+               
+              }}
+            >
+              <span className="font-semibold whitespace-nowrap" style={{ width: '35px' }}>Email</span>
+              <span style={{
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                maxWidth: 'calc(100% - 45px)' // 35px for label + 8px for colon + 2px gap
+              }}>{formatEmail(data.email)}</span>
+            </div>
+          )}
+          {data.employeeAddress && Number(templateId) !== 1 && Number(templateId) !== 2 && Number(templateId) !== 3 && Number(templateId) !== 4 && (
+            <div
+              className={`text-[10px] font-semibold flex flex-col items-start  ${config.textColor.employeeAddress}`}
+              style={{
+                position: 'absolute',
+                top: config.employeeAddress.top,
+                left: config.employeeAddress.left,
+                width: config.employeeAddress.width,
+                textAlign: 'left',
+                zIndex: 10,
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                gap: '2px',
+
+              }}
+            >
+              <span className="font-semibold whitespace-nowrap " style={{ width: '35px' }}>Address</span>
+
+              <span>{formatText(data.employeeAddress, 25)}</span>
+
+
+            </div>
+          )}
           {/* Join Date */}
           {data.joinDate && (
             <div
@@ -684,7 +772,51 @@ Expiry Date: ${data.expiryDate}`;
               <span>{formatText(data.expiryDate, 15)}</span>
             </div>
           )}
+          {Number(templateId) === 5 && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: config.icons.phone.bottom,
+                left: config.icons.phone.left,
+                zIndex: 10
+              }}
+              className={`flex items-center gap-2 ${config.textColor.icons}`}
+            >
+              <PiPhoneFill size={config.icons.phone.size} className="text-[#edc74f]" />
 
+            </div>
+          )}
+
+          {Number(templateId) === 5 && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: config.icons.email.bottom,
+                left: config.icons.email.left,
+                zIndex: 10
+              }}
+              className={`flex items-center gap-2 ${config.textColor.icons}`}
+            >
+              <PiEnvelopeFill size={config.icons.email.size} className="text-[#edc74f]" />
+
+            </div>
+          )}
+
+          {Number(templateId) === 5 && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: config.icons.location.bottom,
+                left: config.icons.location.left,
+                zIndex: 10
+              }}
+              className={`flex items-center gap-2 ${config.textColor.icons}`}
+            >
+              <MdLocationPin size={config.icons.location.size} className="text-[#edc74f]" />
+              
+
+            </div>
+          )}
           {/* Back Side QR Code - Only for template 1 */}
           {Number(templateId) === 1 && (
             <div
