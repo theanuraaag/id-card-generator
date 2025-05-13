@@ -17,7 +17,7 @@ const BackIDPreview = ({ templateId, data }) => {
     }
   };
 
-  
+
   const config = templateConfigs[templateId] || templateConfigs[1];
 
   const generateQRData = () => {
