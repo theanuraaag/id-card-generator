@@ -68,12 +68,12 @@ const Generator = () => {
 
   // Log state changes
   useEffect(() => {
-    console.log("Generator State Updated:", {
-      showTemplateSelection,
-      showCard,
-      formData: formData ? 'Data present' : 'No data',
-      selectedTemplate
-    });
+    // console.log("Generator State Updated:", {
+    //   showTemplateSelection,
+    //   showCard,
+    //   formData: formData ? 'Data present' : 'No data',
+    //   selectedTemplate
+    // });
   }, [showTemplateSelection, showCard, formData, selectedTemplate]);
 
   const handleTemplateSelect = (templateId) => {
@@ -201,7 +201,7 @@ const Generator = () => {
       pdf.save("id-card.pdf");
   };
 
-  console.log("Generator Rendering with State:", { showTemplateSelection, showCard });
+  // console.log("Generator Rendering with State:", { showTemplateSelection, showCard });
 
   return (
     <div className="App bg-white text-black min-h-screen flex flex-col bg-gradient-to-br from-blue-100 to-purple-200">

@@ -2,180 +2,9 @@ import React from "react";
 import { QRCodeSVG } from "qrcode.react";
 import { PiPhoneFill, PiEnvelopeFill } from "react-icons/pi";
 import { MdLocationPin } from "react-icons/md";
-
+import { templateConfigs } from '../config/templateConfigs';
 
 // Template field positions configuration
-const templateConfigs = {
-  1: { // Classic ID
-    photo: { top: '13%', left: '27%', width: '132px', height: '132px' },
-    name: { top: '46%', left: '17%', width: '68%' },
-    designation: { top: '52%', left: '16%', width: '68%' },
-    employeeId: { top: '62%', left: '17%', width: '68%' },
-    department: { top: '67%', left: '17%', width: '60%' },
-    phone: { top: '72%', left: '17%', width: '68%' },
-    email: { top: '77%', left: '17%', width: '68%' },
-    joinDate: { top: '60%', left: '17%', width: '80%' },
-    expiryDate: { top: '64%', left: '17%', width: '80%' },
-    backLogo: { top: '2%', left: '10%', width: '80%', height: '10%' },
-    backCompanyName: { top: '13%', left: '10%', width: '80%' },
-    frontLogo: { top: '3%', left: '5%', width: '15%', height: '15%' },
-    frontCompanyName: { top: '5%', left: '25%', width: '70%' },
-    termsTitle: { top: '25%', left: '10%', width: '80%' },
-    termsContent: { top: '30%', left: '10%', width: '80%', height: '30%' },
-    textColor: {
-      fullName: 'text-gray-800',
-      designation: 'text-gray-600',
-      employeeId: 'text-black',
-      department: 'text-black',
-      phone: 'text-black',
-      email: 'text-black',
-      companyName: 'text-white',
-      companyAddress: 'text-white',
-      companyNameBack: 'text-white',
-      termsTitle: 'text-black',
-      termsContent: 'text-black',
-      dates: 'text-black'
-    },
-    qrCode: { bottom: '2%', right: '35%', width: '35%', height: '35%' },
-  },
-  2: { // Corporate ID
-    photo: { top: '23%', left: '24%', width: '132px', height: '132px' },
-    name: { top: '53%', left: '16%', width: '68%' },
-    designation: { top: '59%', left: '17%', width: '68%' },
-    employeeId: { top: '65%', left: '17%', width: '68%' },
-    department: { top: '64%', left: '17%', width: '60%' },
-    email: { top: '73%', left: '17%', width: '68%' },
-    phone: { top: '69%', left: '17%', width: '60%' },
-    joinDate: { top: '74%', left: '30%', width: '80%' },
-    expiryDate: { top: '78%', left: '30%', width: '80%' },
-    frontQrCode: { bottom: '0%', right: '38%', width: '25%', height: '25%' },
-    backLogo: { top: '10%', left: '10%', width: '80%', height: '15%' },
-    backCompanyName: { top: '25%', left: '10%', width: '80%' },
-    frontLogo: { top: '2%', left: '25%', width: '15%', height: '15%' },
-    frontCompanyName: { top: '4%', left: '45%', width: '70%' },
-    termsTitle: { top: '35%', left: '10%', width: '80%' },
-    termsContent: { top: '43%', left: '10%', width: '80%', height: '30%' },
-    textColor: {
-      fullName: 'text-blue-900',
-      designation: 'text-white',
-      employeeId: 'text-black',
-      phone: 'text-black',
-      email: 'text-black',
-      companyName: 'text-black',
-      companyAddress: 'text-black',
-      companyNameBack: 'text-black',
-      termsTitle: 'text-black',
-      termsContent: 'text-black',
-      dates: 'text-black'
-    },
-    qrCode: { bottom: '-3%', right: '31%', width: '35%', height: '35%' },
-  },
-  3: { // Student ID
-    photo: { top: '15%', left: '27%', width: '120px', height: '120px' },
-    name: { top: '47%', left: '16%', width: '68%' },
-    designation: { top: '52%', left: '15%', width: '68%' },
-    employeeId: { top: '64%', left: '17%', width: '68%' },
-    department: { top: '55%', left: '40%', width: '55%' },
-    email: { top: '72%', left: '17%', width: '68%' },
-    phone: { top: '68%', left: '17%', width: '68%' },
-    joinDate: { top: '49%', left: '28%', width: '80%' },
-    expiryDate: { top: '54%', left: '28%', width: '80%' },
-    frontQrCode: { bottom: '5%', right: '10%', width: '25%', height: '25%' },
-    backLogo: { top: '70%', left: '10%', width: '80%', height: '15%' },
-    backCompanyName: { top: '88%', left: '10%', width: '80%' },
-    frontLogo: { top: '3%', left: '25%', width: '15%', height: '15%' },
-    frontCompanyName: { top: '5%', left: '45%', width: '70%' },
-    termsTitle: { top: '6%', left: '10%', width: '80%' },
-    termsContent: { top: '15%', left: '10%', width: '80%', height: '30%' },
-    textColor: {
-      fullName: 'text-white',
-      designation: 'text-white',
-      employeeId: 'text-white',
-      department: 'text-white',
-      phone: 'text-white',
-      email: 'text-white',
-      companyName: 'text-white',
-      companyAddress: 'text-white',
-      companyNameBack: 'text-white',
-      termsTitle: 'text-white',
-      termsContent: 'text-white',
-      dates: 'text-white'
-    },
-    qrCode: { bottom: '-5%', right: '31%', width: '35%', height: '35%' },
-  },
-  4: { // Modern ID
-    photo: { top: '16%', left: '24%', width: '134px', height: '134px' },
-    name: { top: '48%', left: '17%', width: '68%' },
-    designation: { top: '54.5%', left: '16%', width: '68%' },
-    employeeId: { top: '66%', left: '12%', width: '68%' },
-    department: { top: '66%', left: '16%', width: '60%' },
-    phone: { top: '71%', left: '12%', width: '68%' },
-    email: { top: '76%', left: '12%', width: '68%' },
-    joinDate: { top: '61%', left: '29%', width: '80%' },
-    expiryDate: { top: '66%', left: '29%', width: '80%' },
-    backLogo: { top: '5%', left: '1%', width: '60%', height: '10%' },
-    backCompanyName: { top: '7%', left: '22%', width: '80%' },
-    frontLogo: { top: '3%', left: '20%', width: '15%', height: '15%' },
-    frontCompanyName: { top: '5%', left: '41%', width: '70%' },
-    termsTitle: { top: '17%', left: '10%', width: '80%' },
-    termsContent: { top: '25%', left: '15%', width: '60%', height: '30%' },
-    textColor: {
-      fullName: 'text-gray-800',
-      designation: 'text-gray-600',
-      employeeId: 'text-black',
-      department: 'text-black',
-      phone: 'text-black',
-      email: 'text-black',
-      companyName: 'text-white',
-      companyAddress: 'text-white',
-      companyNameBack: 'text-white',
-      termsTitle: 'text-white',
-      termsContent: 'text-white',
-      dates: 'text-white'
-    },
-    qrCode: { bottom: '-7%', right: '31%', width: '35%', height: '35%' },
-  },
-  5: { // Professional ID
-    photo: { top: '19%', left: '22%', width: '145px', height: '145px' },
-    name: { top: '58%', left: '17%', width: '68%' },
-    designation: { top: '63%', left: '17%', width: '68%' },
-    employeeId: { top: '88%', left: '38%', width: '25%' },
-    department: { top: '67%', left: '17%', width: '60%' },
-    phone: { top: '40%', left: '30%', width: '68%' },
-    employeeAddress: { top: '58%', left: '30%', width: '68%' },
-    email: { top: '49%', left: '30%', width: '68%' },
-    joinDate: { top: '72%', left: '25%', width: '80%' },
-    expiryDate: { top: '76%', left: '25%', width: '80%' },
-    backLogo: { top: '15%', left: '0%', width: '50%', height: '10%' },
-    backCompanyName: { top: '16%', left: '18%', width: '80%' },
-    frontLogo: { top: '7%', left: '22%', width: '15%', height: '15%' },
-    frontCompanyName: { top: '9%', left: '42%', width: '70%' },
-    termsTitle: { top: '25%', left: '10%', width: '80%' },
-    termsContent: { top: '30%', left: '10%', width: '80%', height: '30%' },
-    icons: {
-      phone: { bottom: '55%', left: '15%', size: 20 },
-      email: { bottom: '46%', left: '15%', size: 20 },
-      location: { bottom: '35%', left: '15%', size: 20 }
-    },
-    textColor: {
-      fullName: 'text-white',
-      designation: 'text-white',
-      employeeId: 'text-white',
-      department: 'text-white',
-      phone: 'text-white',
-      employeeAddress: 'text-white',
-      email: 'text-white',
-      companyName: 'text-white',
-      companyAddress: 'text-white',
-      companyNameBack: 'text-white',
-      termsTitle: 'text-black',
-      termsContent: 'text-black',
-      dates: 'text-white',
-      icons: 'text-[#edc74f]'
-    },
-    qrCode: { bottom: '5%', right: '32%', width: '35%', height: '35%' },
-  }
-};
 
 const CardPreview = ({ data, designImage, templateId, showBackSide = false }) => {
   // Get template background based on templateId
@@ -379,9 +208,9 @@ Address: ${data.employeeAddress}`;
               justifyContent: 'center'
             }}
           >
-          <img
-            src={data.photo}
-            alt="Profile"
+            <img
+              src={data.photo}
+              alt="Profile"
               style={{
                 width: '100%',
                 height: '100%',
@@ -552,14 +381,14 @@ Address: ${data.employeeAddress}`;
                 fgColor="black"
               />
             </div>
-        </div>
+          </div>
         )}
       </div>
 
       {/* Back Side - Only show if showBackSide is true */}
       {showBackSide && (
-      <div
-        id="id-card-back"
+        <div
+          id="id-card-back"
           className={`relative w-64 h-110 rounded-lg overflow-hidden ${styles.cardClass}`}
           style={{
             backgroundImage: getTemplateBackground(true),
@@ -644,7 +473,7 @@ Address: ${data.employeeAddress}`;
                 <div className="flex gap-2">
                   <span> &#8226;</span>
                   <p> Identification: Carry the ID card at all times during working hours for identification purposes.</p>
-      </div>
+                </div>
 
                 <div className="flex gap-2">
                   <span> &#8226;</span>
@@ -691,7 +520,7 @@ Address: ${data.employeeAddress}`;
                 margin: 0,
                 display: 'flex',
                 gap: '2px',
-               
+
               }}
             >
               <span className="font-semibold whitespace-nowrap" style={{ width: '35px' }}>Email</span>
@@ -813,7 +642,7 @@ Address: ${data.employeeAddress}`;
               className={`flex items-center gap-2 ${config.textColor.icons}`}
             >
               <MdLocationPin size={config.icons.location.size} className="text-[#edc74f]" />
-              
+
 
             </div>
           )}

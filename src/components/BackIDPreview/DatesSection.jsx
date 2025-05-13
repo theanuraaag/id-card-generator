@@ -1,11 +1,7 @@
 import React from 'react';
+import { formatText } from '../../utils/formatting';
 
 const DatesSection = ({ config, data }) => {
-  const formatText = (text, maxLength = 15) => {
-    if (!text) return '';
-    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
-  };
-
   return (
     <>
       {/* Join Date */}

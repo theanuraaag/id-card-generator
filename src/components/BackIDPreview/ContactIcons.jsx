@@ -1,13 +1,9 @@
 import React from 'react';
 import { PiPhoneFill, PiEnvelopeFill } from "react-icons/pi";
 import { MdLocationPin } from "react-icons/md";
+import { formatText } from '../../utils/formatting';
 
 const ContactIcons = ({ config, data, templateId }) => {
-  const formatText = (text, maxLength) => {
-    if (!text) return '';
-    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
-  };
-
   if (Number(templateId) !== 5) return null;
 
   return (

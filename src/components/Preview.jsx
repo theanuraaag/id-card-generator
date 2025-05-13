@@ -1,6 +1,7 @@
 import React from "react";
 import CardPreview from "./CardPreview";
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 // Dummy data for preview
 const dummyData = {
@@ -20,7 +21,7 @@ const dummyData = {
 
 const Preview = () => {
   return (
-    <section id="preview" className="py-16">
+    <section id="preview" className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-blue-700">Preview</h2>
         
@@ -41,9 +42,9 @@ const Preview = () => {
 
           <Link 
             to="/generate" 
-            className="mt-8 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            
           >
-            Get Started
+           <Button title={"Get Started"}/>
           </Link>
         </div>
       </div>

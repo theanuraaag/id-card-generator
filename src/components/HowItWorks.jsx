@@ -3,12 +3,12 @@ import React from "react";
 const HowItWorks = () => {
   const steps = [
     {
-      title: "Upload Your Template",
-      description: "Choose your ID card design template or upload your own image."
+      title: "Choose a Template",
+      description: "Choose your ID card design template."
     },
     {
       title: "Fill in Details",
-      description: "Enter name, branch, ID number, expiry date, and more using dynamic fields."
+      description: "Enter name, branch, ID number, expiry date, and more using form"
     },
     {
       title: "Generate & Download",

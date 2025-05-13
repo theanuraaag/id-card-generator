@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.31.2",
     "@tailwindcss/vite": "^4.1.4",
     "dom-to-image-more": "^3.5.0",
+    "dotenv": "^16.5.0",
     "html2canvas": "^1.4.1",
     "html2canvas-pro": "^1.5.8",
     "jspdf": "^3.0.1",
